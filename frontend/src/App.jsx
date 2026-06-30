@@ -287,7 +287,7 @@ export default function App() {
     pyqFiles.forEach(f => formData.append("pyq", f));
 
     try {
-      const response = await fetch("https://YOUR-RENDER-URL.onrender.com/upload", { method: "POST", body: formData });
+      const response = await fetch("https://exampilot-ai.onrender.com/upload", { method: "POST", body: formData });
       const data = await response.json();
       if (data.success) {
         const parsed = parseAIResponse(data.analysis);
@@ -361,7 +361,7 @@ export default function App() {
     setAskLoading(true);
     try {
       const context = `Summary: ${summary}\nTopics: ${topics.join(", ")}\nFrequent: ${frequentTopics.join(", ")}\nPYQ Analysis: ${pyqAnalysis}`;
-      const res = await fetch("https://YOUR-RENDER-URL.onrender.com/ask", {
+      const res = await fetch("https://exampilot-ai.onrender.com/ask", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: userMsg, context }),
       });
